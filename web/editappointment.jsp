@@ -29,7 +29,7 @@
         <form method="post" action="appointmentsave.jsp">
             <table>
                 <tr>
-                    <td>Patient Registration No.<input readonly="true" type="text" name="pid" value="<%=request.getParameter("pid")%>"></td>
+                    <td>Patient Registration No.<input readonly type="text" name="pid" value="<%=request.getParameter("pid")%>"></td>
                 </tr>
                 <tr>
                     <td>Enter New Date<input type="text" name="date" value="<%=request.getParameter("date")%>"></td>

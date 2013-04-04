@@ -31,24 +31,24 @@
                             <table>
                                 <tr>
                                     <td>Patient Id</td>
-                                    <td><input  type="text" name="pid" readonly  value="<%=request.getParameter("pid")%>" ></input></td>
+                                    <td><input  type="text" name="pid" readonly  value="<%=request.getParameter("pid")%>" ></td>
                                 </tr>
                                 <tr>
                                     <td>Prescription                                    
                                     </td>
                                     <%if(request.getParameter("prescription")==null){%>
-                                    <input type="hidden" name="status" value="insert"/>
-                                    <td><input type="text"  name="prescription"  placeholder="Give Presccription"></td>
+                                    
+                                    <td><input type="hidden" name="status" value="insert"/><input type="text"  name="prescription"  placeholder="Give Presccription"></td>
                                     <%}else{%> 
-                                    <input type="hidden" name="status" value="update"/>
-                                    <td><input type="text"  name="prescription" value="<%=request.getParameter("prescription")%>"></td>
+                                    
+                                    <td><input type="hidden" name="status" value="update"/><input type="text"  name="prescription" value="<%=request.getParameter("prescription")%>"></td>
                                     <%}%>
                                 </tr>
                                 <tr>
                                     <td colspan="2">
                                         
-                                        <input type="hidden" name="status" value="update"/>
-                                        <input type="submit" value="give Prescription"></input></td>
+                                        <%--<input type="hidden" name="status" value="update"/>--%>
+                                        <input type="submit" value="give Prescription"></td>
                                 </tr>
                                 
                             </table>

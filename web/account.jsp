@@ -119,7 +119,7 @@
                 <%
               }
             catch(Exception e){ /*out.println("<h5>"+e+"</h5>");*/
-                response.sendRedirect("error.jsp");
+                /*response.sendRedirect("error.jsp");*/
             }
 %>
 

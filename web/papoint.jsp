@@ -88,8 +88,8 @@
                             Patients Appointments
                         </h1>
                         <br>
-                        <input type="text" id="pid" placeholder="ENter Patients ID or *"></input>
-                        <input type="button" onclick="showapoint()" value="See Appointment Details"></input>
+                        <input type="text" id="pid" placeholder="ENter Patients ID or *">
+                        <input type="button" onclick="showapoint()" value="See Appointment Details">
                     </div>
                     <br><br>
                     <div id="showdata">Patients Appointment</div>

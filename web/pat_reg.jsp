@@ -29,32 +29,36 @@
             <table>
                 <tr>
                     <td>First Name :</td>
-                    <td><input type="text" name="pname"/></td>
+                    <td><input type="text" name="fname"></td>
                 </tr>
                 <tr>
                     <td>Last Name :</td>
-                    <td><input type="text" name="lname"/></td>
+                    <td><input type="text" name="lname"></td>
+                </tr>
+                <tr>
+                    <td>Date Of Birth :</td>
+                    <td><input type="text" name="dob" placeholder="YY/MM/DD" required></td>
                 </tr>
                 <tr>
                     <td>Gender :</td>
-                    <td>Male :<input type="radio" name="gender" value="male"/><br/>Female :<input type="radio" name="gender" value="female"/></td>
+                    <td>Male :<input type="radio" name="gender" value="male"><br/>Female :<input type="radio" name="gender" value="female"></td>
                     
                 </tr>
                 <tr>
                     <td>Email :</td>
-                    <td><input type="text" name="email"/></td>
+                    <td><input type="text" name="email"></td>
                 </tr>
                 <tr>
                     <td>Address :</td>
-                    <td><input type="text" name="address"/></td>
+                    <td><input type="text" name="address"></td>
                 </tr>
                 <tr>
                     <td>Phone :</td>
-                    <td><input type="text" name="phone"/></td>
+                    <td><input type="text" name="phone"></td>
                 </tr>
                 <tr>
                     <td>Disease :</td>
-                    <td><input type="text" name="disease"/></td>
+                    <td><input type="text" name="disease"></td>
                 </tr>
                 <tr>
                     <td>Doctor Assigned :</td>
@@ -89,7 +93,7 @@
                 </tr>
                 <tr>
                     
-                    <td colspan="2"><input type="submit" value="Submit"/></td>
+                    <td colspan="2"><input type="submit" value="Submit"></td>
                 </tr>
             </table>
     </form>

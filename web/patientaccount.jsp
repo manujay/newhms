@@ -71,37 +71,37 @@
                     <tr>
                         <td>First Name</td>
                         <td><%=rs.getString("fname")%></td>
-                         <td><input type="text" name="t1" value="<%=rs.getString("fname")%>"></input></td>
+                         <td><input type="text" name="t1" value="<%=rs.getString("fname")%>"></td>
                     </tr>
                     <tr>                
                         <td>Last Name</td>
                         <td><%=rs.getString("lname")%></td>
-                         <td><input type="text" name="t2" value="<%=rs.getString("lname")%>"></input></td>
+                         <td><input type="text" name="t2" value="<%=rs.getString("lname")%>"></td>
                     </tr>
                    
                     <tr>        
                         <td>Address</td>
                         <td><%=rs.getString("address")%></td>
-                         <td><input type="text" name="t4" value="<%=rs.getString("address")%>"></input></td>
+                         <td><input type="text" name="t4" value="<%=rs.getString("address")%>"></td>
                     </tr>                    
                     <tr>    
                         <td>Phone</td>
                          <td><%=rs.getString("phone")%></td>
-                 <td><input type="text" name="t5" value="<%=rs.getString("phone")%>"></input></td>
+                 <td><input type="text" name="t5" value="<%=rs.getString("phone")%>"></td>
 
                     </tr>
                     <tr>                    
                         
                         <td>Gender</td>
                         <td><%=rs.getString("gender")%></td>
-              <td><input type="text" name="t6" value="<%=rs.getString("gender")%>"></input></td>
+              <td><input type="text" name="t6" value="<%=rs.getString("gender")%>"></td>
 
                     </tr> 
                     
                     <tr>
                         <td>Submit</td>
                         <td><b>-></b></td>
-                   <td><input type="submit" value="UPDATE"></input></td>
+                   <td><input type="submit" value="UPDATE"></td>
 
                     </tr>
                 </table>   

@@ -36,6 +36,7 @@
 		<%}else{%>
                 <li><a href="patientprofile.jsp">Profile</a></li>
                  <li><a href="patientaccount.jsp">My Account</a></li>
+                 <li><a href="billing.jsp">Billing</a></li>
                   <li><a href="logout.jsp">Logout</a></li>
                         <%}%>
                 </ul>

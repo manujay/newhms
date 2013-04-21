@@ -32,8 +32,9 @@ public class patient extends HttpServlet {
         PrintWriter out = response.getWriter();
         try {
             
-            String pname = request.getParameter("pname");
+            String fname = request.getParameter("fname");
             String lname = request.getParameter("lname");
+            String dob = request.getParameter("dob");
             String email = request.getParameter("email");
             String address = request.getParameter("address");
             String phone = request.getParameter("phone");
@@ -48,19 +49,20 @@ public class patient extends HttpServlet {
                 String driver = "com.mysql.jdbc.Driver";
                 Class.forName(driver);
                 Connection con = DriverManager.getConnection(url, username, password);
-                PreparedStatement pstmt = con.prepareStatement("insert into pat(fname,lname,email,address,phone,disease,currdoc,gender)values(?,?,?,?,?,?,?,?)");
-                pstmt.setString(1, pname);
+                PreparedStatement pstmt = con.prepareStatement("insert into pat(fname,lname,dob,email,address,phone,disease,currdoc,gender)values(?,?,?,?,?,?,?,?,?)");
+                pstmt.setString(1, fname);
                 pstmt.setString(2, lname);
-                pstmt.setString(3, email);
-                pstmt.setString(4, address);
-                pstmt.setString(5, phone);
-                pstmt.setString(6, disease);
-                pstmt.setString(7, currdoc);
-                pstmt.setString(8, gender);
+                pstmt.setString(3, dob);
+                pstmt.setString(4, email);
+                pstmt.setString(5, address);
+                pstmt.setString(6, phone);
+                pstmt.setString(7, disease);
+                pstmt.setString(8, currdoc);
+                pstmt.setString(9, gender);
                 int i=pstmt.executeUpdate();
                 if(i!=0){
                      response.sendRedirect("index.jsp");
-                  out.println("<h1>U have Successfully Registered</h1>");
+                  /*out.println("<h1>U have Successfully Registered</h1>");*/
                 }
                 /*else out.println("<h1>failed</h1>");*/
             }

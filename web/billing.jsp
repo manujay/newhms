@@ -4,7 +4,7 @@
     Author     : SuperUser
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8" import="java.sql.*,javax.servlet.*" session="true"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -12,7 +12,7 @@
         <title>Billing</title>
         <link rel="stylesheet" type="text/css" href="style.css" />
     </head>
-    <body>
+    <body><%if(session.getAttribute("n1")==null)response.sendRedirect("index.jsp");%>
         <%--<h1>Hello World!</h1>--%>         
         <div id="outer">
             
@@ -30,43 +30,64 @@
 			<div id="primaryContent">
 				<div class="box">
 					<h2>Welcome to Hospital Management System</h2>
+<% 
+        String pid  = (String)session.getAttribute("n1");
+  try{
+     
+        String user   = "root";
+        String pass   = "root";
+        String url    = "jdbc:mysql://localhost:3306/nhmsdb";
+        String driver = "com.mysql.jdbc.Driver";
+        Class.forName(driver);
+        Connection con = DriverManager.getConnection(url, user, pass);
+        PreparedStatement pstmt = con.prepareStatement("select * from pat where pid = ?");
+        pstmt.setString(1, pid);
+        ResultSet rs = pstmt.executeQuery();
+%>
 
         <form>
             <table>
-                <th>ITEMS</th>
-                <th>PARTICULARS</th>
-                <th>AMOUNT</th>
-                <tr><td><h4>Ward Charges</h4></td><td><input type="text" name="wrdc"></td><td><input type="text" name="wrdca"></td></tr>
-                <tr><td><h4>Registration Charges</h4></td><td><select name=""><option value="Emergency">Emergency</option><option value="Referred">Referred</option><option value="OPD">OPD</option></select></td><td><input type="text"></td></tr>
-                <tr><td><h4>Doctor Fees</h4></td><td><input type="text"></td><td><input type="text"></td></tr>
-            </table><hr>
-            <table>
-                <thead><td colspan="3"><h4>Medicine Charges</h4></td></thead>
-            <tr><th>Name</th><th>Type</th><th>Price</th></tr>
-            <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-            <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-            <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-            <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-            <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-            <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-            <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-            <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-            <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-            </table><hr>
-            <table>
-                <thead><td colspan="3"><h4>Diagnostic Charges</h4></td></thead>
-            <tr><th>Name</th><th>Type</th><th>Cost/Rs</th></tr>
-            <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-            <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-            <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-            <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-            <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-            <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-            <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-            <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-            <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+                <tr><th colspan="3">Patient Details</th></tr>
+                <tr><td colspan="3"><%=rs.getString("fname")%></td></tr>
+                <tr><td colspan="3"><%=rs.getString("dob")%></td></tr>
+                <tr><td colspan="3"><%=rs.getString("address")%></td></tr>
+                <tr><td colspan="3"><%=rs.getString("phone")%></td></tr>
+                <tr><td colspan="3"><%=rs.getString("email")%></td></tr>
             </table>
-        </form>                                        
+            <hr>
+            <table>
+                 <tr>
+                     <th colspan="3">Charges</th>
+                 </tr>
+                 <tr>
+                     <th>Date</th>
+                     <th>Doctor</th>
+                     <th>Consultation Fees</th>
+                 </tr>
+           
+<% 
+   PreparedStatement pstmt1 = con.prepareStatement("select * from appointment where pid = ?");
+   pstmt1.setString(1, pid);
+   ResultSet rs2 = pstmt1.executeQuery();
+   while(rs2.next()){%>        
+  
+                <tr>
+                    <td><%=rs2.getString("date")%></td>
+                    <td><%=rs2.getString("email")%></td>
+                    <td><input type="text" readonly></td>
+                </tr> 
+              <%}%>
+              
+            </table>
+         
+ </form>
+<%     
+    } catch(Exception e){
+        /*response.sendRedirect("error.jsp");*/
+        out.println(e.getMessage());}
+        finally{out.close();}
+                      
+%>
                                         <div class="boxContent">
 				</div>
 			</div>

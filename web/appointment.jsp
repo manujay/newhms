@@ -4,6 +4,8 @@
     Author     : SuperUser
 --%>
 
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Calendar"%>
 <%@page contentType="text/html" pageEncoding="UTF-8" session="true" import="java.sql.*,javax.servlet.http.*"%>
 <!DOCTYPE html>
 <html>
@@ -36,6 +38,10 @@
 <%
           
         try{
+            Calendar cal = Calendar.getInstance();
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            dateFormat.setLenient(false);
+            String dd1=dateFormat.format(cal.getTime());
         String email = (String)session.getAttribute("n1");
         String user = "root";
         String pass = "root";
@@ -43,8 +49,9 @@
         String driver = "com.mysql.jdbc.Driver";
         Class.forName(driver);
         Connection con = DriverManager.getConnection(url, user, pass);
-        PreparedStatement pstmt = con.prepareStatement("select * from appointment where email=?");
+        PreparedStatement pstmt = con.prepareStatement("select * from appointment where email=? and date=?");
         pstmt.setString(1, email);
+        pstmt.setString(2 ,dd1);
         ResultSet rs = pstmt.executeQuery();
         while(rs.next()){ %>
 

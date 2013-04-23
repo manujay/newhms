@@ -4,7 +4,7 @@
     Author     : SuperUser
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8" import="java.sql.*,javax.servlet.*" session="true"%>
+<%@page contentType="text/html" pageEncoding="UTF-8" import="java.sql.*" session="true"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -30,6 +30,9 @@
 			<div id="primaryContent">
 				<div class="box">
 					<h2>Welcome to Hospital Management System</h2>
+                                           <form>
+            <table>
+                <tr><th colspan="3">Patient Details</th></tr>
 <% 
         String pid  = (String)session.getAttribute("n1");
   try{
@@ -42,13 +45,11 @@
         Connection con = DriverManager.getConnection(url, user, pass);
         PreparedStatement pstmt = con.prepareStatement("select * from pat where pid = ?");
         pstmt.setString(1, pid);
-        ResultSet rs = pstmt.executeQuery();
+        ResultSet rs = null;
+        rs = pstmt.executeQuery();
+        rs.next();
 %>
-
-        <form>
-            <table>
-                <tr><th colspan="3">Patient Details</th></tr>
-                <tr><td colspan="3"><%=rs.getString("fname")%></td></tr>
+                <tr><td colspan="3"><%=rs.getString("fname")+" "+rs.getString("lname")%></td></tr>
                 <tr><td colspan="3"><%=rs.getString("dob")%></td></tr>
                 <tr><td colspan="3"><%=rs.getString("address")%></td></tr>
                 <tr><td colspan="3"><%=rs.getString("phone")%></td></tr>
@@ -60,23 +61,36 @@
                      <th colspan="3">Charges</th>
                  </tr>
                  <tr>
+                     <th>Appointment</th>
                      <th>Date</th>
                      <th>Doctor</th>
-                     <th>Consultation Fees</th>
                  </tr>
            
 <% 
-   PreparedStatement pstmt1 = con.prepareStatement("select * from appointment where pid = ?");
+   PreparedStatement pstmt1 = con.prepareStatement("select * from appointment where pid = ? and EMAIL = (select currdoc from pat where pid = ?)");
    pstmt1.setString(1, pid);
+   pstmt1.setString(2 ,pid);
    ResultSet rs2 = pstmt1.executeQuery();
+   int i = 0;
    while(rs2.next()){%>        
   
                 <tr>
+                    <td><label><%=i+1%></label></td>
                     <td><%=rs2.getString("date")%></td>
                     <td><%=rs2.getString("email")%></td>
-                    <td><input type="text" readonly></td>
+                    
                 </tr> 
-              <%}%>
+              <% i = i+1 ;}%>
+              <tr>
+                  <th>No. of Appointments</th>
+                  <th>Fees per Appointment</th>
+                  <th>Total Charges</th>
+              </tr>
+              <tr>
+                  <td><%=i%></td>
+                  <td><label><% double fees = 100.00 ;%><%=fees%></label></td>
+                  <td><label><%=i*fees%></label></td>
+              </tr>
               
             </table>
          
@@ -84,8 +98,8 @@
 <%     
     } catch(Exception e){
         /*response.sendRedirect("error.jsp");*/
-        out.println(e.getMessage());}
-        finally{out.close();}
+        out.println("<h1>"+e+"</h1>");}
+      
                       
 %>
                                         <div class="boxContent">

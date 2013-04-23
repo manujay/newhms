@@ -26,7 +26,7 @@
                         <h1>Welcome <%=session.getAttribute("n1")%></h1>
                         
                         
-        <form method="post" action="appointmentsave.jsp">
+        <form method="post" action="IssueApp">
             <table>
                 <tr>
                     <td>Patient Registration No.<input readonly type="text" name="pid" value="<%=request.getParameter("pid")%>"></td>

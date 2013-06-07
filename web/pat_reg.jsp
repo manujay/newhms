@@ -85,8 +85,8 @@
     
     }
     catch(Exception e){ 
-        //out.println("<h6>"+e+"</h6>");
-        response.sendRedirect("error.jsp");
+        out.println("<h6>"+e+"</h6>");
+        //response.sendRedirect("error.jsp");
         }
 %> 
 </select></td>

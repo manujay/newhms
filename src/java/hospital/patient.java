@@ -71,8 +71,8 @@ public class patient extends HttpServlet {
                 /*else out.println("<h1>failed</h1>");*/
             }
             catch(Exception e){
-                response.sendRedirect("error.jsp");
-              //  out.println("<h1>"+e+"</h1>");
+                //response.sendRedirect("error.jsp");
+              out.println("<h1>"+e+"</h1>");
             }
         } finally {            
             out.close();

@@ -7,6 +7,7 @@ package hospital;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -35,6 +36,9 @@ public class patient extends HttpServlet {
             String fname = request.getParameter("fname");
             String lname = request.getParameter("lname");
             String dob = request.getParameter("dob");
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            dateFormat.setLenient(false);
+            String dd1=dateFormat.format(dob);
             String email = request.getParameter("email");
             String address = request.getParameter("address");
             String phone = request.getParameter("phone");
@@ -52,7 +56,7 @@ public class patient extends HttpServlet {
                 PreparedStatement pstmt = con.prepareStatement("insert into pat(fname,lname,dob,email,address,phone,disease,currdoc,gender)values(?,?,?,?,?,?,?,?,?)");
                 pstmt.setString(1, fname);
                 pstmt.setString(2, lname);
-                pstmt.setString(3, dob);
+                pstmt.setString(3, dd1);
                 pstmt.setString(4, email);
                 pstmt.setString(5, address);
                 pstmt.setString(6, phone);

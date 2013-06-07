@@ -29,15 +29,15 @@
             <table>
                 <tr>
                     <td>First Name :</td>
-                    <td><input type="text" name="fname"></td>
+                    <td><input type="text" name="fname" required></td>
                 </tr>
                 <tr>
                     <td>Last Name :</td>
-                    <td><input type="text" name="lname"></td>
+                    <td><input type="text" name="lname" required></td>
                 </tr>
                 <tr>
                     <td>Date Of Birth :</td>
-                    <td><input type="text" name="dob" placeholder="YY/MM/DD" required></td>
+                    <td><input type="date" name="dob" required></td>
                 </tr>
                 <tr>
                     <td>Gender :</td>
@@ -50,11 +50,11 @@
                 </tr>
                 <tr>
                     <td>Address :</td>
-                    <td><input type="text" name="address"></td>
+                    <td><input type="text" name="address" required></td>
                 </tr>
                 <tr>
                     <td>Phone :</td>
-                    <td><input type="text" name="phone"></td>
+                    <td><input type="text" name="phone" required></td>
                 </tr>
                 <tr>
                     <td>Disease :</td>

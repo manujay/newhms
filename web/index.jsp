@@ -28,7 +28,7 @@
 		<div id="primaryContentContainer">
 			<div id="primaryContent">
 				<div class="box">
-					<h2>Welcome to Hospital Management System</h2>
+					<h2>Welcome to Patient Information Portal</h2>
                                         <div class="boxContent">
 				</div>
 			</div>

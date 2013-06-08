@@ -5,7 +5,7 @@
 --%>
 
 <div id="header">
-		<h1><a href="index.jsp">Hospital Management System</a></h1>
+		<h1><a href="index.jsp">Patient Information Portal</a></h1>
 		<h2>Curing through Care</h2>
                 
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

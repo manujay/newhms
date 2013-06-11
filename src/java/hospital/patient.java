@@ -36,9 +36,9 @@ public class patient extends HttpServlet {
             String fname = request.getParameter("fname");
             String lname = request.getParameter("lname");
             String dob = request.getParameter("dob");
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-            dateFormat.setLenient(false);
-            String dd1=dateFormat.format(dob);
+            //SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            //dateFormat.setLenient(false);
+            //String dd1=dateFormat.format(dob);
             String email = request.getParameter("email");
             String address = request.getParameter("address");
             String phone = request.getParameter("phone");
@@ -56,7 +56,8 @@ public class patient extends HttpServlet {
                 PreparedStatement pstmt = con.prepareStatement("insert into pat(fname,lname,dob,email,address,phone,disease,currdoc,gender)values(?,?,?,?,?,?,?,?,?)");
                 pstmt.setString(1, fname);
                 pstmt.setString(2, lname);
-                pstmt.setString(3, dd1);
+                //pstmt.setString(3, dd1);
+                pstmt.setString(3, dob);
                 pstmt.setString(4, email);
                 pstmt.setString(5, address);
                 pstmt.setString(6, phone);
@@ -71,8 +72,8 @@ public class patient extends HttpServlet {
                 /*else out.println("<h1>failed</h1>");*/
             }
             catch(Exception e){
-                //response.sendRedirect("error.jsp");
-              out.println("<h1>"+e+"</h1>");
+                response.sendRedirect("error.jsp");
+              //out.println("<h1>"+e+"</h1>");
             }
         } finally {            
             out.close();

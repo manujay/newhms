@@ -1,0 +1,5 @@
+#!/bin/bash
+cd $OPENSHIFT_DATA_DIR/apache-tomcat-7.0.57/bin
+nohup sh shutdown.sh
+echo "Tomcat7 shutdown complete"
+exit 0

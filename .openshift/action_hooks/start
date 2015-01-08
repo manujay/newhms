@@ -1,0 +1,4 @@
+#!/bin/bash
+cd $OPENSHIFT_DATA_DIR/apache-tomcat-7.0.57/bin
+nohup sh startup.sh && tail -f ../logs/*
+echo "Tomcat7 startup complete"

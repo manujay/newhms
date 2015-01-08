@@ -1,3 +1,5 @@
-The OpenShift `diy` cartridge documentation can be found at:
+Hi, i have created this project for the purpose of learninig about git , jsp , java servlets.
+It Uses simple jsp servlet with some ajax for page load improvments and jdbc::mysql adapters to connect to MySQL as database.
 
-http://openshift.github.io/documentation/oo_cartridge_guide.html#diy
+Deployed On [Openshift](http://diy-mjnewpro.rhcloud.com/)
+Using  DIY CATRIDGE Running Tomcat Apache 7. 
